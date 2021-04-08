@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Country Table View Controller-->
         <scene sceneID="cwJ-cu-BQ4">
             <objects>
-                <tableViewController id="xIr-hD-C6A" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CountryTableViewController" id="xIr-hD-C6A" customClass="CountryTableViewController" customModule="TestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="G5y-np-54z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -88,10 +88,10 @@
             </objects>
             <point key="canvasLocation" x="984.05797101449286" y="-45.535714285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Country View Controller-->
         <scene sceneID="9uM-e9-wEs">
             <objects>
-                <viewController id="6JL-xM-2Kr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailCountryViewController" id="6JL-xM-2Kr" customClass="DetailCountryViewController" customModule="TestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IEJ-Ta-Nmo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
