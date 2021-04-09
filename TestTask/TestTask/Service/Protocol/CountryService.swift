@@ -8,9 +8,10 @@
 import Foundation
 
 enum CountryServiceError: Error {
-    
+    case errorGettingURLFromString
+    case errorGettingValueFromResponse
 }
 
 protocol CountryService {
-    func loadCountries(page: URL?, completion: @escaping(Result<Countries, CountryServiceError>) -> Void)
+    func loadCountries(pageURLString: String?, completion: @escaping(Result<Countries, CountryServiceError>) -> Void)
 }

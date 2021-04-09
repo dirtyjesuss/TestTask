@@ -7,6 +7,11 @@
 import Foundation
 
 struct Countries: Codable {
-    var next: URL?
+    var nextURLString: String
     var countries: [Country]
+    
+    enum CodingKeys: String, CodingKey {
+        case nextURLString = "next"
+        case countries
+    }
 }

@@ -24,7 +24,7 @@
 		ED7457B8261E239B002B6EB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7457B6261E239B002B6EB1 /* Main.storyboard */; };
 		ED7457BA261E239E002B6EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED7457B9261E239E002B6EB1 /* Assets.xcassets */; };
 		ED7457BD261E239E002B6EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7457BB261E239E002B6EB1 /* LaunchScreen.storyboard */; };
-		ED7457C9261E288F002B6EB1 /* CountryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7457C8261E288F002B6EB1 /* CountryTableViewController.swift */; };
+		ED7457C9261E288F002B6EB1 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7457C8261E288F002B6EB1 /* CountryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		ED7457B9261E239E002B6EB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED7457BC261E239E002B6EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED7457BE261E239E002B6EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED7457C8261E288F002B6EB1 /* CountryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewController.swift; sourceTree = "<group>"; };
+		ED7457C8261E288F002B6EB1 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 		ED62AEA3261E322D00813281 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ED7457C8261E288F002B6EB1 /* CountryTableViewController.swift */,
+				ED7457C8261E288F002B6EB1 /* CountryViewController.swift */,
 				ED62AEA4261E324F00813281 /* CountryCell.swift */,
 			);
 			path = View;
@@ -389,7 +389,7 @@
 				ED62AEB0261E46C200813281 /* IconRightDetailTextCell.swift in Sources */,
 				ED62AF1E261F3B6500813281 /* CountryViewModel.swift in Sources */,
 				ED62AEC2261E700A00813281 /* Countries.swift in Sources */,
-				ED7457C9261E288F002B6EB1 /* CountryTableViewController.swift in Sources */,
+				ED7457C9261E288F002B6EB1 /* CountryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
