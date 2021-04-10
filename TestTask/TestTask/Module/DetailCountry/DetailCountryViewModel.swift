@@ -5,7 +5,7 @@
 //  Created by Ruslan Khanov on 10.04.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol DetailCountryViewModel {
     var name: String { get }
@@ -13,7 +13,7 @@ protocol DetailCountryViewModel {
     var capital: String { get }
     var population: Int { get }
     var countryDescription: String { get }
-    var images: [URL?] { get }
+    var images: [UIImage?] { get }
 }
 
 class DetailCountryViewModelImplementation: DetailCountryViewModel {
@@ -33,14 +33,13 @@ class DetailCountryViewModelImplementation: DetailCountryViewModel {
     var countryDescription: String {
         country.countryDescription
     }
-    var images: [URL?] {
-        if country.imageURLString.isEmpty {
-            return country.countryInfo.images
-        } else if country.countryInfo.images.isEmpty {
-            return [country.countryInfo.flagImageURL]
-        } else {
-            return [URL(string: country.imageURLString)]
-        }
+    
+    #warning("Mock data")
+    var images: [UIImage?] {[
+        UIImage(named: "i-photo"),
+        UIImage(named: "i-photo"),
+        UIImage(named: "i-photo")
+        ]
     }
     
     private var country: Country

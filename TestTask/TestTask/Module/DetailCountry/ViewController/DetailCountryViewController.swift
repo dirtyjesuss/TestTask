@@ -12,6 +12,12 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
     // MARK: - Outlets
     
     @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var carouselView: UICollectionView!
+    @IBOutlet private var pageControl: UIPageControl! {
+        didSet {
+            pageControl.numberOfPages = viewModel.images.count
+        }
+    }
     
     // MARK: - Vars & Lets
     
@@ -24,6 +30,8 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
         super.viewDidLoad()
         
         tableView.dataSource = self
+        carouselView.delegate = self
+        carouselView.dataSource = self
 
         loadCellData()
     }
@@ -82,5 +90,47 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
         cell?.configure(icon: icon, text: text, detailText: detailText)
         return cell ?? UITableViewCell()
     }
+    
+    // MARK: Page control
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let visibleRect = CGRect(origin: carouselView.contentOffset, size: carouselView.bounds.size)
+        let midPointOfVisibleRect = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        if let visibleIndexPath = carouselView.indexPathForItem(at: midPointOfVisibleRect) {
+                 pageControl.currentPage = visibleIndexPath.row
+        }
+    }
+}
 
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+
+extension DetailCountryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        viewModel.images.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
+        cell?.imageView.image = viewModel.images[indexPath.row]
+        return cell ?? UICollectionViewCell()
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension DetailCountryViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: carouselView.bounds.width, height: carouselView.bounds.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        0
+    }
 }
