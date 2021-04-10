@@ -19,6 +19,10 @@
 		ED62AF10261F2B2700813281 /* TestTaskUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62AF0F261F2B2700813281 /* TestTaskUnitTests.swift */; };
 		ED62AF18261F2B3C00813281 /* CountriesModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62AF17261F2B3C00813281 /* CountriesModelTests.swift */; };
 		ED62AF1E261F3B6500813281 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62AF1D261F3B6500813281 /* CountryViewModel.swift */; };
+		ED62AF342620F7F300813281 /* DetailCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62AF332620F7F300813281 /* DetailCountryViewModel.swift */; };
+		ED62AF392621018500813281 /* SectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62AF382621018500813281 /* SectionData.swift */; };
+		ED62AF3F2621021A00813281 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62AF3E2621021A00813281 /* Cell.swift */; };
+		ED62AF4A26210E5E00813281 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62AF4926210E5E00813281 /* Storyboarded.swift */; };
 		ED7457B1261E239B002B6EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7457B0261E239B002B6EB1 /* AppDelegate.swift */; };
 		ED7457B3261E239B002B6EB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7457B2261E239B002B6EB1 /* SceneDelegate.swift */; };
 		ED7457B8261E239B002B6EB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED7457B6261E239B002B6EB1 /* Main.storyboard */; };
@@ -54,6 +58,10 @@
 		ED62AF11261F2B2700813281 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED62AF17261F2B3C00813281 /* CountriesModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesModelTests.swift; sourceTree = "<group>"; };
 		ED62AF1D261F3B6500813281 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
+		ED62AF332620F7F300813281 /* DetailCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCountryViewModel.swift; sourceTree = "<group>"; };
+		ED62AF382621018500813281 /* SectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionData.swift; sourceTree = "<group>"; };
+		ED62AF3E2621021A00813281 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		ED62AF4926210E5E00813281 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		ED7457AD261E239B002B6EB1 /* TestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED7457B0261E239B002B6EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED7457B2261E239B002B6EB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +103,6 @@
 		ED62AEA3261E322D00813281 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ED7457C8261E288F002B6EB1 /* CountryViewController.swift */,
 				ED62AEA4261E324F00813281 /* CountryCell.swift */,
 			);
 			path = View;
@@ -105,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				ED62AEAD261E464600813281 /* View */,
+				ED62AF422621049D00813281 /* ViewController */,
+				ED62AF332620F7F300813281 /* DetailCountryViewModel.swift */,
 			);
 			path = DetailCountry;
 			sourceTree = "<group>";
@@ -112,7 +121,6 @@
 		ED62AEAD261E464600813281 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				ED62AEA9261E463F00813281 /* DetailCountryViewController.swift */,
 				ED62AEAF261E46C200813281 /* IconRightDetailTextCell.swift */,
 				ED62AEB3261E472C00813281 /* TextCell.swift */,
 			);
@@ -155,6 +163,39 @@
 			path = TestTaskUnitTests;
 			sourceTree = "<group>";
 		};
+		ED62AF372621007B00813281 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ED62AF382621018500813281 /* SectionData.swift */,
+				ED62AF3E2621021A00813281 /* Cell.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		ED62AF422621049D00813281 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED62AEA9261E463F00813281 /* DetailCountryViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ED62AF45262107E200813281 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				ED7457C8261E288F002B6EB1 /* CountryViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		ED62AF4826210E4100813281 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				ED62AF4926210E5E00813281 /* Storyboarded.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		ED7457A4261E239B002B6EB1 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +223,8 @@
 				ED62AEB6261E6D9E00813281 /* Service */,
 				ED7457CC261E28C7002B6EB1 /* Storyboard */,
 				ED7457C6261E283C002B6EB1 /* Module */,
+				ED62AF4826210E4100813281 /* Protocol */,
+				ED62AF372621007B00813281 /* Helpers */,
 				ED7457B0261E239B002B6EB1 /* AppDelegate.swift */,
 				ED7457B2261E239B002B6EB1 /* SceneDelegate.swift */,
 				ED7457B9261E239E002B6EB1 /* Assets.xcassets */,
@@ -203,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				ED62AEA3261E322D00813281 /* View */,
+				ED62AF45262107E200813281 /* ViewController */,
 				ED62AF1D261F3B6500813281 /* CountryViewModel.swift */,
 			);
 			path = Country;
@@ -380,8 +424,11 @@
 			files = (
 				ED62AEA5261E324F00813281 /* CountryCell.swift in Sources */,
 				ED7457B1261E239B002B6EB1 /* AppDelegate.swift in Sources */,
+				ED62AF3F2621021A00813281 /* Cell.swift in Sources */,
 				ED62AEAA261E463F00813281 /* DetailCountryViewController.swift in Sources */,
+				ED62AF342620F7F300813281 /* DetailCountryViewModel.swift in Sources */,
 				ED62AED2261F207000813281 /* CountryAPIService.swift in Sources */,
+				ED62AF392621018500813281 /* SectionData.swift in Sources */,
 				ED62AEB4261E472C00813281 /* TextCell.swift in Sources */,
 				ED62AEBB261E6EDF00813281 /* Country.swift in Sources */,
 				ED7457B3261E239B002B6EB1 /* SceneDelegate.swift in Sources */,
@@ -390,6 +437,7 @@
 				ED62AF1E261F3B6500813281 /* CountryViewModel.swift in Sources */,
 				ED62AEC2261E700A00813281 /* Countries.swift in Sources */,
 				ED7457C9261E288F002B6EB1 /* CountryViewController.swift in Sources */,
+				ED62AF4A26210E5E00813281 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

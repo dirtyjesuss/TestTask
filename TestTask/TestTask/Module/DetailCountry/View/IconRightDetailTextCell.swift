@@ -9,9 +9,13 @@ import UIKit
 
 class IconRightDetailTextCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet private var iconImageView: UIImageView!
     @IBOutlet private var shortTextLabel: UILabel!
     @IBOutlet private var rightDetailTextLabel: UILabel!
+    
+    // MARK: - View
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +26,14 @@ class IconRightDetailTextCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - Configure
+    
+    func configure(icon: UIImage, text: String, detailText: String) {
+        iconImageView.image = icon
+        shortTextLabel.text = text
+        rightDetailTextLabel.text = detailText
     }
 
 }

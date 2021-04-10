@@ -59,6 +59,10 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         UIView()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToDetailCountryViewController(with: viewModel.items[indexPath.row])
+    }
+    
     // MARK: - Scroll view delegate
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -78,6 +82,15 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let item = viewModel.items[indexPath.row]
         cell?.configure(name: item.name, capital: item.capital, flagImage: UIImage(), shortDescription: item.shortDescription)
         return cell ?? UITableViewCell()
+    }
+    
+    // MARK: - Navigation
+    
+    private func navigateToDetailCountryViewController(with data: Country) {
+        let detailCountryViewModel = DetailCountryViewModelImplementation(data: data)
+        let destination = DetailCountryViewController.makeViewController(viewModel: detailCountryViewModel)
+        
+        navigationController?.pushViewController(destination, animated: true)
     }
 }
 

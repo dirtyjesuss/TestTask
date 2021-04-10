@@ -7,9 +7,32 @@
 
 import UIKit
 
+enum TextCellStyle: Int {
+    case normalText
+    case largeText
+}
+
 class TextCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet private var descriptionLabel: UILabel!
+    
+    // MARK: - Vars & Lets
+    var style: TextCellStyle? {
+        didSet {
+            guard let style = style else { return }
+            
+            switch style {
+            case .normalText:
+                descriptionLabel.font = descriptionLabel.font.withSize(18)
+            case .largeText:
+                descriptionLabel.font = descriptionLabel.font.withSize(32)
+            }
+        }
+    }
+    
+    // MARK: - View
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +43,13 @@ class TextCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - Configure
+    
+    func configure(text: String, style: TextCellStyle) {
+        descriptionLabel.text = text
+        self.style = style
     }
 
 }

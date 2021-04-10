@@ -34,7 +34,7 @@ class CountryAPIService: CountryService {
         let request = AF.request(url)
             
         request.responseDecodable(of: Countries.self) { (response) in
-            debugPrint(response)
+            //debugPrint(response)
             guard let countries = response.value else {
                 completion(.failure(.errorGettingValueFromResponse))
                 return
