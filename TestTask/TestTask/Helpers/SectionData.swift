@@ -8,5 +8,5 @@
 import Foundation
 
 struct SectionData {
-    let cells : [Cell]
+    var cells : [Cell]
 }

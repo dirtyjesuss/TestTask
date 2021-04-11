@@ -13,7 +13,7 @@ protocol DetailCountryViewModel {
     var capital: String { get }
     var population: Int { get }
     var countryDescription: String { get }
-    var images: [UIImage?] { get }
+    var imageURLs: [URL] { get }
 }
 
 class DetailCountryViewModelImplementation: DetailCountryViewModel {
@@ -35,11 +35,8 @@ class DetailCountryViewModelImplementation: DetailCountryViewModel {
     }
     
     #warning("Mock data")
-    var images: [UIImage?] {[
-        UIImage(named: "i-photo"),
-        UIImage(named: "i-photo"),
-        UIImage(named: "i-photo")
-        ]
+    var imageURLs: [URL] {
+        country.images.isEmpty ? [country.flagImageURL] : country.images
     }
     
     private var country: Country

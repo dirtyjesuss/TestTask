@@ -10,4 +10,5 @@ import UIKit
 enum Cell {
     case textCell(text: String, style: TextCellStyle)
     case iconRightDetailTextCell(icon: UIImage, text: String, detailText: String)
+    case countryCell(name: String, capital: String, shortDescription: String, flagImage: UIImage)
 }

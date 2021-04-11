@@ -21,24 +21,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CountryCell" id="tgm-Of-Epz" customClass="CountryCell" customModule="TestTask" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CountryCell" id="tgm-Of-Epz" customClass="CountryCell" customModule="TestTask" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="110.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tgm-Of-Epz" id="MfK-Xt-ksG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="110.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="110.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="8gI-yF-pn7">
-                                                    <rect key="frame" x="106" y="11" width="288" height="50.5"/>
+                                                    <rect key="frame" x="106" y="11" width="257" height="50.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JHM-Vm-Woi">
-                                                            <rect key="frame" x="0.0" y="0.0" width="288" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="257" height="20.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12s-Vx-xO1">
-                                                            <rect key="frame" x="0.0" y="32.5" width="288" height="18"/>
+                                                            <rect key="frame" x="0.0" y="32.5" width="257" height="18"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Short description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kv4-fI-vUX">
-                                                    <rect key="frame" x="17" y="70" width="377" height="21"/>
+                                                    <rect key="frame" x="17" y="70" width="346" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -117,7 +117,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ec4-Ty-1Zi">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="cy9-Mw-G9h">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="296"/>
@@ -255,7 +255,7 @@
                         <constraints>
                             <constraint firstItem="ec4-Ty-1Zi" firstAttribute="leading" secondItem="66r-3Y-ZWT" secondAttribute="leading" id="0kx-9B-uZf"/>
                             <constraint firstItem="66r-3Y-ZWT" firstAttribute="bottom" secondItem="ec4-Ty-1Zi" secondAttribute="bottom" id="EL9-q5-XX7"/>
-                            <constraint firstItem="ec4-Ty-1Zi" firstAttribute="top" secondItem="66r-3Y-ZWT" secondAttribute="top" id="ivd-ox-OiR"/>
+                            <constraint firstItem="ec4-Ty-1Zi" firstAttribute="top" secondItem="oIT-vd-l3F" secondAttribute="top" id="bH3-25-GD0"/>
                             <constraint firstItem="66r-3Y-ZWT" firstAttribute="trailing" secondItem="ec4-Ty-1Zi" secondAttribute="trailing" id="ppF-Zi-kEt"/>
                         </constraints>
                     </view>
@@ -267,12 +267,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfQ-gK-sOb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1921.7391304347827" y="-75"/>
+            <point key="canvasLocation" x="1966.6666666666667" y="-46.205357142857139"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Main Navigation Controller-->
         <scene sceneID="3di-b6-xfS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oiQ-nq-6Ev" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oiQ-nq-6Ev" customClass="MainNavigationController" customModule="TestTask" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Ao-84-HLx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

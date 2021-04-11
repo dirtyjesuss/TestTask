@@ -16,11 +16,11 @@ class CountryCell: UITableViewCell {
     @IBOutlet private var flagImageView: UIImageView!
     @IBOutlet private var shortDescriptionLabel: UILabel!
     
-    func configure(name: String, capital: String, flagImage: UIImage?, shortDescription: String) {
+    func configure(name: String, capital: String, shortDescription: String, flagImageURL: URL) {
         nameLabel.text = name
         capitalLabel.text = capital
-        flagImageView.image = flagImage
         shortDescriptionLabel.text = shortDescription
+        flagImageView.downloadImage(from: flagImageURL)
     }
 
     override func awakeFromNib() {

@@ -36,6 +36,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.hidesBarsOnSwipe = false
         tableView.reloadData()
     }
 
@@ -80,7 +82,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func countryCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell
         let item = viewModel.items[indexPath.row]
-        cell?.configure(name: item.name, capital: item.capital, flagImage: UIImage(), shortDescription: item.shortDescription)
+        cell?.configure(name: item.name, capital: item.capital, shortDescription: item.shortDescription, flagImageURL: item.flagImageURL)
         return cell ?? UITableViewCell()
     }
     

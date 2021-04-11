@@ -15,7 +15,7 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
     @IBOutlet private var carouselView: UICollectionView!
     @IBOutlet private var pageControl: UIPageControl! {
         didSet {
-            pageControl.numberOfPages = viewModel.images.count
+            pageControl.numberOfPages = viewModel.imageURLs.count
         }
     }
     
@@ -34,6 +34,7 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
         carouselView.dataSource = self
 
         loadCellData()
+        configureBar()
     }
     
     // MARK: - Instantiation
@@ -61,10 +62,27 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
             return textCell(text: text, style: style, at: indexPath)
         case .iconRightDetailTextCell(icon: let icon, text: let text, detailText: let detailText):
             return iconRightDetailTextCell(icon: icon, text: text, detailText: detailText, at: indexPath)
+        default:
+            return UITableViewCell()
         }
     }
     
+    // MARK: - Status bar
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - Private methods
+    
+    private func configureBar() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.navigationBar.sizeToFit()
+        navigationController?.hidesBarsOnSwipe = true
+        navigationController?.navigationBar.tintColor = .white
+        tableView.contentInsetAdjustmentBehavior = .never
+    }
     
     private func loadCellData() {
         sectionData = SectionData(cells: [
@@ -81,6 +99,8 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as? TextCell
         cell?.configure(text: text, style: style)
         cell?.separatorInset = UIEdgeInsets(top: 0, left: cell?.bounds.size.width ?? 0, bottom: 0, right: 0)
+        
+        cell?.selectionStyle = .none
 
         return cell ?? UITableViewCell()
     }
@@ -88,6 +108,9 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
     private func iconRightDetailTextCell(icon: UIImage, text: String, detailText: String, at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IconRightDetailTextCell", for: indexPath) as? IconRightDetailTextCell
         cell?.configure(icon: icon, text: text, detailText: detailText)
+        
+        cell?.selectionStyle = .none
+
         return cell ?? UITableViewCell()
     }
     
@@ -105,12 +128,12 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
 
 extension DetailCountryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.images.count
+        viewModel.imageURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
-        cell?.imageView.image = viewModel.images[indexPath.row]
+        cell?.imageView.downloadImage(from: viewModel.imageURLs[indexPath.row])
         return cell ?? UICollectionViewCell()
     }
 }

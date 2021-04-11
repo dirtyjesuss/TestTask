@@ -5,7 +5,7 @@
 //  Created by Ruslan Khanov on 08.04.2021.
 //
 
-import Foundation
+import UIKit
 
 protocol CountryViewModelDelegate {
     func didLoadData()
@@ -19,7 +19,7 @@ protocol CountryViewModel {
 }
 
 class CountryViewModelImplementation: CountryViewModel {
-    
+        
     var delegate: CountryViewModelDelegate?
     var items: [Country] = []
     
@@ -27,11 +27,15 @@ class CountryViewModelImplementation: CountryViewModel {
     
     private var countryService: CountryService!
     private var isFetchingInProgress = false
+    
+    // MARK: - Init
         
     init() {
-        #warning("Set country service in factory not in init")
+        #warning("Set services in factory not in init")
         countryService = CountryAPIService()
     }
+    
+    // MARK: - Public methods
     
     func fetchCountries() {
         guard !isFetchingInProgress else {
