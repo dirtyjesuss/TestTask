@@ -16,6 +16,7 @@ protocol CountryViewModel {
     var delegate: CountryViewModelDelegate? { get set }
     
     func fetchCountries()
+    func refreshViewModel()
 }
 
 class CountryViewModelImplementation: CountryViewModel {
@@ -66,5 +67,10 @@ class CountryViewModelImplementation: CountryViewModel {
                 }
             }
         }
+    }
+    
+    func refreshViewModel() {
+        items = []
+        nextPage = nil
     }
 }

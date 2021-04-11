@@ -17,6 +17,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Vars & Lets
     
     private var viewModel: CountryViewModel!
+    
+    private var refreshControl = UIRefreshControl()
         
     // MARK: - Lifecycle
 
@@ -33,6 +35,8 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
         viewModel = CountryViewModelImplementation()
         viewModel.delegate = self
         viewModel.fetchCountries()
+        
+        configureRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +83,17 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     // MARK: - Private methods
     
+    private func configureRefreshing() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh() {
+        viewModel.refreshViewModel()
+        viewModel.fetchCountries()
+    }
+    
     private func countryCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell
         let item = viewModel.items[indexPath.row]
@@ -102,5 +117,6 @@ extension CountryViewController: CountryViewModelDelegate {
     func didLoadData() {
         tableView.reloadData()
         activityIndicator.stopAnimating()
+        refreshControl.endRefreshing()
     }
 }
