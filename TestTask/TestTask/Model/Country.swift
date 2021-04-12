@@ -7,12 +7,15 @@
 
 import UIKit
 
-struct Country: Decodable {
+class Country: Decodable {
     var name, continent, capital: String
     var population: Int
     var shortDescription, countryDescription: String
-    var images: [URL]
+    var imageURLs: [URL]
     var flagImageURL: URL
+    
+    var images: [UIImage]
+    var flagImage: UIImage
     
     enum CodingKeys: String, CodingKey {
         case name, continent, capital, population
@@ -27,7 +30,7 @@ struct Country: Decodable {
         case flagImageURL = "flag"
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
         continent = try container.decode(String.self, forKey: .continent)
@@ -41,9 +44,12 @@ struct Country: Decodable {
         flagImageURL = try countryInfo.decode(URL.self, forKey: .flagImageURL)
 
         if let imageURL = try? container.decode(URL.self, forKey: .imageURL) {
-            self.images = [imageURL]
+            self.imageURLs = [imageURL]
         } else {
-            self.images = try countryInfo.decode([URL].self, forKey: .imageURLs)
+            self.imageURLs = try countryInfo.decode([URL].self, forKey: .imageURLs)
         }
+        
+        images = []
+        flagImage = UIImage()
     }
 }

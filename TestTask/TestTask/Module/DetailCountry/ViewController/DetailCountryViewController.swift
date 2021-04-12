@@ -15,7 +15,7 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
     @IBOutlet private var carouselView: UICollectionView!
     @IBOutlet private var pageControl: UIPageControl! {
         didSet {
-            pageControl.numberOfPages = viewModel.imageURLs.count
+            pageControl.numberOfPages = viewModel.images.count
         }
     }
     
@@ -128,12 +128,12 @@ class DetailCountryViewController: UIViewController, UITableViewDataSource, Stor
 
 extension DetailCountryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.imageURLs.count
+        viewModel.images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as? ImageCell
-        cell?.imageView.downloadImage(from: viewModel.imageURLs[indexPath.row])
+        cell?.imageView.image = viewModel.images[indexPath.row]
         return cell ?? UICollectionViewCell()
     }
 }

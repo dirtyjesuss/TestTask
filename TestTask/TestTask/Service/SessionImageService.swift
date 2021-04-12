@@ -1,26 +1,26 @@
 //
-//  UIImageView+Downloading.swift
+//  SessionImageService.swift
 //  TestTask
 //
-//  Created by Ruslan Khanov on 11.04.2021.
+//  Created by Ruslan Khanov on 12.04.2021.
 //
 
-import Foundation
 import UIKit
 
-
-extension UIImageView {
-    func downloadImage(from url: URL) {
-        self.image = UIImage(named: "No-Image-Placeholder")
+class SessionImageService: ImageService {
+    func downloadImage(from url: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data, error == nil,
                 let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
+            else {
+                print("Cannot load image")
+                return
+            }
+            DispatchQueue.main.async() {
+                completion(.success(image))
             }
         }.resume()
     }

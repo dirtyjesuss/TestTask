@@ -9,6 +9,7 @@ import UIKit
 
 protocol CountryViewModelDelegate {
     func didLoadData()
+    func didImageUpdate(for index: Int)
 }
 
 protocol CountryViewModel {
@@ -27,13 +28,14 @@ class CountryViewModelImplementation: CountryViewModel {
     private var nextPage: String?
     
     private var countryService: CountryService!
+    private var imageService: ImageService!
     private var isFetchingInProgress = false
     
     // MARK: - Init
         
     init() {
-        #warning("Set services in factory not in init")
         countryService = CountryAPIService()
+        imageService = SessionImageService()
     }
     
     // MARK: - Public methods
@@ -62,6 +64,9 @@ class CountryViewModelImplementation: CountryViewModel {
                     
                     self?.items.append(contentsOf: response.countries)
                     self?.delegate?.didLoadData()
+                    
+                    let indexPath = self?.calculateIndexPathsToReload(from: response.countries)
+                    self?.loadImages(for: indexPath!)
 
                     self?.nextPage = response.nextURLString
                 }
@@ -72,5 +77,41 @@ class CountryViewModelImplementation: CountryViewModel {
     func refreshViewModel() {
         items = []
         nextPage = nil
+    }
+    
+    private func loadImages(for indexPath: [IndexPath]) {
+        indexPath.forEach {
+            let index = $0.row
+            let item = items[index]
+            
+            item.flagImage = UIImage(named: "No-Image-Placeholder") ?? UIImage()
+            
+            imageService.downloadImage(from: item.flagImageURL) { [weak self] result in
+                switch result {
+                case .failure(_):
+                    break
+                case .success(let image):
+                    item.flagImage = image
+                    self?.delegate?.didImageUpdate(for: index)
+                }
+            }
+            
+            item.imageURLs.forEach { url in
+                imageService.downloadImage(from: url) {result in
+                    switch result {
+                    case .failure(_):
+                        break
+                    case .success(let image):
+                        item.images.append(image)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func calculateIndexPathsToReload(from newCountries: [Country]) -> [IndexPath] {
+      let startIndex = items.count - newCountries.count
+      let endIndex = startIndex + newCountries.count
+      return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
     }
 }

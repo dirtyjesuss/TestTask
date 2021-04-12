@@ -84,7 +84,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - Private methods
     
     private func configureRefreshing() {
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
@@ -97,7 +97,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
     private func countryCell(at indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell
         let item = viewModel.items[indexPath.row]
-        cell?.configure(name: item.name, capital: item.capital, shortDescription: item.shortDescription, flagImageURL: item.flagImageURL)
+        cell?.configure(name: item.name, capital: item.capital, shortDescription: item.shortDescription, flagImage: item.flagImage)
         return cell ?? UITableViewCell()
     }
     
@@ -114,6 +114,11 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
 // MARK: - CountryViewModelDelegate
 
 extension CountryViewController: CountryViewModelDelegate {
+    func didImageUpdate(for index: Int) {
+        let indexPath = IndexPath(item: index, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .fade)
+    }
+    
     func didLoadData() {
         tableView.reloadData()
         activityIndicator.stopAnimating()
