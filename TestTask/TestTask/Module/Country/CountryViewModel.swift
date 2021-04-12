@@ -18,6 +18,8 @@ protocol CountryViewModel {
     
     func fetchCountries()
     func refreshViewModel()
+    func loadMoreData()
+
 }
 
 class CountryViewModelImplementation: CountryViewModel {
@@ -29,6 +31,10 @@ class CountryViewModelImplementation: CountryViewModel {
     
     private var countryService: CountryService!
     private var imageService: ImageService!
+    private var countryStorageService: CountryStorageService!
+    
+    private let networkStatusInstructor = NetworkStatusInstructor.publicInstructor
+    
     private var isFetchingInProgress = false
     
     // MARK: - Init
@@ -36,6 +42,7 @@ class CountryViewModelImplementation: CountryViewModel {
     init() {
         countryService = CountryAPIService()
         imageService = SessionImageService()
+        countryStorageService = CountryUserDefaultsService()
     }
     
     // MARK: - Public methods
@@ -45,6 +52,28 @@ class CountryViewModelImplementation: CountryViewModel {
             return
         }
         
+        print(networkStatusInstructor.status)
+        if networkStatusInstructor.status == .connected {
+            fetchFromNet()
+        } else {
+            fetchFromStorage()
+        }
+    }
+    
+    func loadMoreData() {
+        if networkStatusInstructor.status == .connected {
+            fetchFromNet()
+        }
+    }
+    
+    func refreshViewModel() {
+        items = []
+        nextPage = nil
+    }
+    
+    // MARK: - Private methods
+    
+    private func fetchFromNet() {
         if let nextPage = nextPage, nextPage.isEmpty {
             return
         }
@@ -65,6 +94,8 @@ class CountryViewModelImplementation: CountryViewModel {
                     self?.items.append(contentsOf: response.countries)
                     self?.delegate?.didLoadData()
                     
+                    self?.saveInStorage(countries: response.countries)
+                    
                     let indexPath = self?.calculateIndexPathsToReload(from: response.countries)
                     self?.loadImages(for: indexPath!)
 
@@ -74,9 +105,14 @@ class CountryViewModelImplementation: CountryViewModel {
         }
     }
     
-    func refreshViewModel() {
-        items = []
-        nextPage = nil
+    private func fetchFromStorage() {
+        let newCountries = countryStorageService.fetch()
+        items.append(contentsOf: newCountries)
+        delegate?.didLoadData()
+        
+        let indexPath = calculateIndexPathsToReload(from: newCountries)
+        loadImages(for: indexPath)
+
     }
     
     private func loadImages(for indexPath: [IndexPath]) {
@@ -110,8 +146,12 @@ class CountryViewModelImplementation: CountryViewModel {
     }
     
     private func calculateIndexPathsToReload(from newCountries: [Country]) -> [IndexPath] {
-      let startIndex = items.count - newCountries.count
-      let endIndex = startIndex + newCountries.count
-      return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+        let startIndex = items.count - newCountries.count
+        let endIndex = startIndex + newCountries.count
+        return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
+    }
+    
+    private func saveInStorage(countries: [Country]) {
+        countryStorageService.save(newCountries: countries)
     }
 }

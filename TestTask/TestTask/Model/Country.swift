@@ -52,4 +52,22 @@ class Country: Decodable {
         images = []
         flagImage = UIImage()
     }
+
+}
+
+extension Country: Encodable {
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(continent, forKey: .continent)
+        try container.encode(capital, forKey: .capital)
+        try container.encode(population, forKey: .population)
+        try container.encode(shortDescription, forKey: .shortDescription)
+        try container.encode(countryDescription, forKey: .countryDescription)
+        try container.encode("", forKey: .imageURL)
+        
+        var countryInfo = container.nestedContainer(keyedBy: CountryInfoCodingKeys.self, forKey: .countryInfo)
+        try countryInfo.encode(imageURLs, forKey: .imageURLs)
+        try countryInfo.encode(flagImageURL, forKey: .flagImageURL)
+    }
 }

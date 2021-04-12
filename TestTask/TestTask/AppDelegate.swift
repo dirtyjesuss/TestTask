@@ -14,7 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //UserDefaults.standard.removeObject(forKey: "countries")
+        let bruh = UserDefaults.standard.object(forKey: "countries")
         
+        print("Key Value after remove \(String(describing: bruh))")
+
         return true
     }
 

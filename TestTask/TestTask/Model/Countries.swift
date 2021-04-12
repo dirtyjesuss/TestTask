@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct Countries: Decodable {
+struct Countries: Codable {
     var nextURLString: String
     var countries: [Country]
     

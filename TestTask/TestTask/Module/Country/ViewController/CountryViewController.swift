@@ -76,7 +76,7 @@ class CountryViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             if ((scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height)
             {
-                viewModel.fetchCountries()
+                viewModel.loadMoreData()
             }
         }
     }

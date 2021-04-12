@@ -33,6 +33,10 @@
 		ED82CE3A2622DD7D00852576 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82CE392622DD7D00852576 /* MainNavigationController.swift */; };
 		ED82CE6726243B6500852576 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82CE6626243B6500852576 /* ImageService.swift */; };
 		ED82CE73262457FA00852576 /* SessionImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82CE72262457FA00852576 /* SessionImageService.swift */; };
+		ED82CE792624799A00852576 /* CountryStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82CE782624799A00852576 /* CountryStorageService.swift */; };
+		ED82CE7F262479DC00852576 /* CountryUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82CE7E262479DC00852576 /* CountryUserDefaultsService.swift */; };
+		ED82CE84262485EF00852576 /* NetworkStatusInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82CE83262485EF00852576 /* NetworkStatusInstructor.swift */; };
+		ED82CE8E262491F700852576 /* CountryImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED82CE8D262491F700852576 /* CountryImageType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +82,10 @@
 		ED82CE392622DD7D00852576 /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		ED82CE6626243B6500852576 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		ED82CE72262457FA00852576 /* SessionImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionImageService.swift; sourceTree = "<group>"; };
+		ED82CE782624799A00852576 /* CountryStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryStorageService.swift; sourceTree = "<group>"; };
+		ED82CE7E262479DC00852576 /* CountryUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryUserDefaultsService.swift; sourceTree = "<group>"; };
+		ED82CE83262485EF00852576 /* NetworkStatusInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusInstructor.swift; sourceTree = "<group>"; };
+		ED82CE8D262491F700852576 /* CountryImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryImageType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 				ED62AEB7261E6DB400813281 /* Protocol */,
 				ED62AED1261F207000813281 /* CountryAPIService.swift */,
 				ED82CE72262457FA00852576 /* SessionImageService.swift */,
+				ED82CE7E262479DC00852576 /* CountryUserDefaultsService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -133,6 +142,7 @@
 			children = (
 				ED62AEC6261EEE5400813281 /* CountryService.swift */,
 				ED82CE6626243B6500852576 /* ImageService.swift */,
+				ED82CE782624799A00852576 /* CountryStorageService.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -142,6 +152,7 @@
 			children = (
 				ED62AEBA261E6EDF00813281 /* Country.swift */,
 				ED62AEC1261E700A00813281 /* Countries.swift */,
+				ED82CE8D262491F700852576 /* CountryImageType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 				ED7457CC261E28C7002B6EB1 /* Storyboard */,
 				ED7457C6261E283C002B6EB1 /* Module */,
 				ED82CE382622DD7D00852576 /* View */,
+				ED82CE82262485C900852576 /* Networking */,
 				ED62AF4826210E4100813281 /* Protocol */,
 				ED62AF372621007B00813281 /* Helpers */,
 				ED7457B0261E239B002B6EB1 /* AppDelegate.swift */,
@@ -279,6 +291,14 @@
 				ED82CE392622DD7D00852576 /* MainNavigationController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		ED82CE82262485C900852576 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				ED82CE83262485EF00852576 /* NetworkStatusInstructor.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		FAF5B4A60C92109258438C3E /* Frameworks */ = {
@@ -444,12 +464,15 @@
 			files = (
 				ED82CE3A2622DD7D00852576 /* MainNavigationController.swift in Sources */,
 				ED7457B1261E239B002B6EB1 /* AppDelegate.swift in Sources */,
+				ED82CE8E262491F700852576 /* CountryImageType.swift in Sources */,
+				ED82CE7F262479DC00852576 /* CountryUserDefaultsService.swift in Sources */,
 				ED62AF3F2621021A00813281 /* Cell.swift in Sources */,
 				ED62AEAA261E463F00813281 /* DetailCountryViewController.swift in Sources */,
 				ED62AF342620F7F300813281 /* DetailCountryViewModel.swift in Sources */,
 				ED62AED2261F207000813281 /* CountryAPIService.swift in Sources */,
 				ED62AF392621018500813281 /* SectionData.swift in Sources */,
 				ED62AEBB261E6EDF00813281 /* Country.swift in Sources */,
+				ED82CE792624799A00852576 /* CountryStorageService.swift in Sources */,
 				ED82CE73262457FA00852576 /* SessionImageService.swift in Sources */,
 				ED7457B3261E239B002B6EB1 /* SceneDelegate.swift in Sources */,
 				ED82CE33262263A800852576 /* CountryCell.swift in Sources */,
@@ -458,6 +481,7 @@
 				ED82CE6726243B6500852576 /* ImageService.swift in Sources */,
 				ED82CE2E2622639300852576 /* TextCell.swift in Sources */,
 				ED82CE2F2622639300852576 /* IconRightDetailTextCell.swift in Sources */,
+				ED82CE84262485EF00852576 /* NetworkStatusInstructor.swift in Sources */,
 				ED62AEC2261E700A00813281 /* Countries.swift in Sources */,
 				ED82CE302622639300852576 /* ImageCell.swift in Sources */,
 				ED7457C9261E288F002B6EB1 /* CountryViewController.swift in Sources */,
